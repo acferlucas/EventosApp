@@ -3,17 +3,47 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	  <title>EventosApp</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+	
+	<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+	
+	<link rel="stylesheet" href="styles/cadastro.css">
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
 </head>
 <body>
-	<h1>Cadastro Eventos :</h1>
-	<form method="post">
-		nome : <input type="text" value="" name="nome">
-		local : <input type="text" value="" name="local">
-		Data : <input type="date" value="" name="data">
-		Horario : <input type="text" value="" name="horario">
+<header>
+	<img alt="logo" src="assets/calendarheavy.png">
+	<h1 style="text-align: center;">Cadastro Eventos</h1>
+	<a id="ancora" class="waves-effect blue darken-1 btn" href="/eventos"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a>
+</header>
+	
+	<form class="container" method="post">
 		
-		<button type="submit">Salvar</button>
+		<div class="row">
+			<div class="input-field col s12">
+				Nome: <input type="text" value="" name="nome" placeholder="Nome do evento"/>
+			</div>
+		<div class="row">
+			<div class="input-field col s6">
+				Local: <input type="text" value="" name="local" placeholder="Local aonde evento acontecera"/>
+			</div>
+			<div class="input-field col s3">
+				Data: <input type="date" value="" name="data"/>
+			</div>
+			<div class="input-field col s3">
+				Horario: <input type="time" value="" name="horario"/>
+			</div>
+		</div>
+		<div class="button-container">
+			<button class="waves-effect deep-purple btn btn" type="submit">Salvar</button>
+		</div>
+		</div>
+		
 	</form>
 </body>
 
