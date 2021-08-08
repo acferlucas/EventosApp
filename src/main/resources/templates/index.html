@@ -1,7 +1,32 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>EventosApp</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
 
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="styles/style.css">
+</head>
 <body>
-	<h2>hello Sring boot</h2>
-	<h3>Hello eclipse</h3>
+	<h1>Lista de Eventos</h1>
+	<a class="waves-effect waves-light btn" href="/cadastrarEvento">Cadastrar Evento</a>
+	
+	<div th:each="evento : ${eventos}">
+		<div class="row">
+			
+				<p><span th:text=${evento.nome}></span></p>
+				<p><span th:text=${evento.local}></span></p>
+				<p><span th:text=${evento.data}></span></p>
+				<p><span th:text=${evento.horario}></span></p>
+	
+		</div>
+	</div>
+	
+	 <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>
