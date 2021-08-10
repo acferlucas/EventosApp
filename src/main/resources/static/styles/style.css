@@ -47,7 +47,7 @@ tbody tr {
 td:nth-child(1) {
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
-	color: #61DCFB;
+	padding-left: 1rem;
 }
 td:nth-child(4) {
 	border-top-right-radius: 8px;

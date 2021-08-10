@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	  <title>EventosApp</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+	
+	<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+	
+	<link rel="stylesheet" href="styles/evento.css">
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+</head>
+<body>
+<header>
+	<img alt="logo" src="assets/calendarheavy.png">
+	<h1 style="text-align: center;">Detalhes Do Evento</h1>
+	<a id="ancora" class="waves-effect blue darken-1 btn" href="/eventos"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a>
+</header>
+<main>
+	<div th:each="evento: ${evento}" class="evento-container">
+		 <div class="div-content">
+		 	<p><i class="material-icons left">message</i>Nome: <span th:text="${evento.nome}"></span></p>
+		 	<p><i class="material-icons left">place</i>Local: <span th:text="${evento.local}"></span></p>
+		 	<p><i class="material-icons left">event_note</i>Data: <span th:text="${evento.data}"></span></p>
+		 	<p><i class="material-icons left">alarm</i>Horario: <span th:text="${evento.horario}"></span></p>
+		 </div>
+	</div>
+	<form method="post">
+		<div>
+			<div>
+				<i class="material-icons left">account_circle</i>
+				<input type="text" value="" name="nomeConvidado" placeholder="Nome do Convidado">
+			</div>
+			<div>
+				<i class="material-icons left">confirmation_number</i>
+				<input type="text" value="" name="rg" placeholder="Rg">
+			</div>
+			<button class="waves-effect deep-purple btn btn" type="submit">Adicionar</button>
+		</div>
+	</form>
+	<div id="grid-content">
+	<div class="users-container" th:each="convidado: ${convidados}">
+		<div>
+			<p><i class="material-icons left">account_circle</i><span th:text="${convidado.nomeConvidado}"></span></p>
+		</div>
+		<div>
+			<p><i class="material-icons left">confirmation_number</i><span th:text="${convidado.rg}"></span></p>
+		</div>
+	</div>
+	</div>
+</main>
+</body>
+
+
+</html>

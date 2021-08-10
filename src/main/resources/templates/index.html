@@ -35,7 +35,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="evento : ${eventos}">
-					<td><span th:text=${evento.nome}></span></td>
+					<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.id)).build()}"><span th:text=${evento.nome}></span></a></td>
 					<td><span th:text=${evento.local}></span></td>
 					<td><span th:text=${evento.data}></span></td>
 					<td><span th:text=${evento.horario}></span></td>
