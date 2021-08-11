@@ -24,6 +24,7 @@
 		<a id="ancora" class="waves-effect blue darken-1 btn" href="/cadastrarEvento"><i class="material-icons left">add_circle_outline</i>Novo Evento</a>
 	</header>
 	<main>
+	
 		<table>
 			<thead>
 				<tr>
@@ -31,6 +32,7 @@
 					<th>Local</th>
 					<th>Data</th>
 					<th>Horario</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,6 +41,11 @@
 					<td><span th:text=${evento.local}></span></td>
 					<td><span th:text=${evento.data}></span></td>
 					<td><span th:text=${evento.horario}></span></td>
+					<td>
+						<a th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.id)).build()}">
+							<i class="material-icons left">delete</i>
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

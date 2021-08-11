@@ -40,9 +40,12 @@ main {
 }
 .evento-container p{
 	font-weight: bold;
+	
 }
+
 .evento-container p span{
-	font-weight: 400;
+	font-weight: 500;
+	color: #3D3D44;
 }
 .div-content{
 	display: grid;
@@ -93,9 +96,17 @@ form div div {
 	margin-top: 1rem;
 	background-color: #fff;
 	padding: 1rem 2rem;
-	width: 40rem;
+	border-radius:10px;
+	width: 35rem;
 	display: flex;
+	position:relative;
+	align-items:center;
 	justify-content: space-around;
+}
+.users-container a {
+	position: absolute;
+	
+	right: 0.5rem;
 }
 .users-container div {
 	min-width: 10rem;

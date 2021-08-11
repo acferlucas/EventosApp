@@ -51,7 +51,11 @@
 		<div>
 			<p><i class="material-icons left">confirmation_number</i><span th:text="${convidado.rg}"></span></p>
 		</div>
+		<a th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}">
+			<i class="material-icons left">delete</i>
+		</a>
 	</div>
+					
 	</div>
 </main>
 </body>

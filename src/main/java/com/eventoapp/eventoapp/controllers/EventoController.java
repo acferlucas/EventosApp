@@ -1,11 +1,15 @@
 package com.eventoapp.eventoapp.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoapp.eventoapp.models.Convidado;
 import com.eventoapp.eventoapp.models.Evento;
@@ -29,9 +33,13 @@ public class EventoController {
 	@RequestMapping(value="/cadastrarEvento",method=RequestMethod.POST)
 	public String form(Evento evento) {
 		
-		er.save(evento); 
 		
-		 return "redirect:/cadastrarEvento";
+		er.save(evento); 
+		Integer codigoInt = evento.getId();
+		String id = "" + codigoInt;
+		
+		System.out.println(id);
+		 return "redirect:/"+id;
 	}
 	
 	@RequestMapping("/eventos")
@@ -56,9 +64,25 @@ public class EventoController {
 		 
 		 return mv;
 	}
+	
+	@RequestMapping("/deletarEvento")
+	public String deletarEvento(Integer id) {
+		
+		Evento evento = er.findById(id);
+		
+		er.delete(evento);
+		
+		return "redirect:/eventos";
+	}
+	
+	
+	
 	@RequestMapping(value = "/{id}", method =RequestMethod.POST)
-	public String detalhesEventoPost(@PathVariable("id") Integer id,Convidado convidado) {
-		 
+	public String detalhesEventoPost(@PathVariable("id") Integer id,@Valid Convidado convidado,BindingResult result, RedirectAttributes attributes) {
+		 if(result.hasErrors()) {
+			 attributes.addFlashAttribute("msg", "Verifique os Campos");
+			 return "redirect:/{id}";
+		 }
 		 Evento evento = er.findById(id);
 		 
 		 convidado.setEvento(evento);
@@ -66,5 +90,18 @@ public class EventoController {
 		 
 		
 		return "redirect:/{id}";
+	}
+	
+	@RequestMapping("/deletarConvidado")
+	public String deletarConvidado(String rg) {
+		
+		Convidado convidado = cr.findByRg(rg);
+		
+		cr.delete(convidado);
+		Evento evento = convidado.getEvento();
+		Integer codigoInt = evento.getId();
+		String id = "" + codigoInt;
+		
+		return "redirect:/"+id;
 	}
 }
